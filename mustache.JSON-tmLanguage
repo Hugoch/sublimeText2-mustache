@@ -1,0 +1,72 @@
+{	"name": "Mustache (HTML)",
+	"scopeName": "source.mustache",
+	"fileTypes": ["mustache"],
+	"repository": {
+		"partials":{
+			"patterns": [
+				{
+					"name": "keyword.operator.mustache",
+					"match": "\\{\\{>\\s*([A-Za-z0-9_.?]+)\\s*\\}\\}"
+				}
+			]
+		},
+		"comments":{
+			"patterns": [
+				{
+					"name":"comment.mustache",
+					"match": "\\{\\{!\\s*([A-Za-z0-9_.?]+)\\s*\\}\\}"
+				}
+			]
+		},
+		"variables":{
+			"patterns": [
+				{
+					"name": "entity.name.tag.mustache",
+					"match": "\\{\\{\\{\\s*([A-Za-z0-9_.?]+)\\s*\\}\\}\\}"
+				},
+				{
+					"name": "entity.name.tag.mustache",
+					"match": "\\{\\{\\s*([A-Za-z0-9_.?]+)\\s*\\}\\}"
+				}
+			]
+		},
+		"blocks":{
+			"name": "entity.name.tag.mustache",
+			"begin": "\\{\\{\\s*(#|\\^)[A-Za-z0-9_.]+\\s*\\}\\}",
+			"end": "\\{\\{/[A-Za-z0-9_.]+\\}\\}",
+			"patterns":[
+				{
+					"include": "$self"
+				},
+				{
+					"include": "#variables"
+				},
+				{
+					"include": "text.html.basic"
+				},
+				{
+					"name": "string.unquoted.mustache",
+					"match": "."
+				}
+			]
+		}
+	},
+	"patterns": [
+		{
+			"include": "#variables"
+		},
+		{
+			"include": "#partials"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#blocks"
+		},
+		{
+			"include": "text.html.basic"
+		}
+	],
+	"uuid": "93706aaa-9b66-4e9e-bb64-31a8ffcfb00d"
+}
